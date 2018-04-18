@@ -1,45 +1,43 @@
-Print [DataCubes](https://github.com/gjmcn/data-cube) in the Node.js console, browser and browser console.
+Print [DataCubes](https://github.com/gjmcn/data-cube) in the terminal, browser or browser console.
 
-## Install/Load
+## Usage
 
-Uses the Universal Module Definition (UMD) so can be used in any JavaScript environment. In Node.js:
+Uses the Universal Module Definition (UMD) so should work in any JavaScript environment. 
 
-* install:
-    ```
-    npm install --save data-cube-print-console
-    ```
-* load:
-   ```js
-   require('data-cube-print-console');
-   ```
+In Node.js:
 
-Currently, the only formatting option is whether to draw horizontal lines. Printed tables are 'compact' by default &mdash; lines are not drawn. To change this:
+* install: `npm install --save data-cube-print-console`
 
-```js
-const setOps = require('data-cube-print-console');
-setOps({compact: false});  //draw horizontal lines
-```
+* load: `require('data-cube-print-console');`
 
-## Use
 The package adds two methods to `Array.prototype`:
 
-`print`: print a cube (or a standard array)
+* `print`: print a cube (or a standard array)
 
-`info`: print summary information about a cube (or a standard array)
+* `info`: print summary information about a cube (or a standard array)
 
-If not passed an argument, the above methods print the relevant information and return the array/cube. This makes it easy to print intermediate results during a computation, e.g. `x.sum().print().log()`.
+If called without an argument, the above methods print the relevant information and return the array/cube. This makes it easy to print intermediate results, e.g. `x.sum().print().sqrt()`.
 
 If passed a truthy argument, `print` and `info` return the string to be printed, but do not print anything.
 
+Currently, the only formatting option is whether to draw lines between rows:
+
+```js
+const setOps = require('data-cube-print-console');
+setOps({compact: false});   //draw lines
+```
+
+Other formatting options will be added in future.
+
 ## Notes
 
-* the default formatting makes it easy to indentify what things are (colors are not used in the browser):
+* the default formatting makes it easy to identify what things are (colors are not used in the browser):
 
 	* entries are colored based on type
 	* strings are quoted
-	* labels and keys are white; indices are gray and are wrapped in parentheses;
+	* labels and keys are white; indices are gray and are wrapped in parentheses
 
-* `print` and `info` do *not* convert a standard array to a cube like core DataCube methods
+* `print` and `info` do *not* convert a standard array to a cube like core DataCube methods do
 
 * use [data-cube-print-html](https://github.com/gjmcn/data-cube-print-html) to print cubes as HTML tables
 
