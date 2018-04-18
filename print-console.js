@@ -1,5 +1,5 @@
 {
-  'use strict'
+  'use strict';
   
   const Table = require('tty-table');
   const chalk = require('chalk');

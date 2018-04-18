@@ -1,5 +1,5 @@
 {
-  'use strict'
+  'use strict';
     
   require('data-cube');
   setOps = require('data-cube-print-console');
