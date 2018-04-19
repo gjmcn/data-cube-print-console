@@ -3,6 +3,7 @@
   
   const Table = require('tty-table');
   const chalk = require('chalk');
+  const addArrayMethod = require('data-cube-helper').addArrayMethod
   
   
   //--------------- options and prep ---------------//
@@ -18,19 +19,12 @@
     borderStyle: (typeof window === 'object' ? 2 : 1),
     borderColor : "gray",
     headerAlign : "right",
-    paddingLeft: -6,
+    paddingLeft: -7,
     paddingRight: 1,
     align : "right",
     compact: true
   };
   
-  //check new array properties do not already exist
-  ['print','info'].map(a => {
-    if (a in Array.prototype) {
-      throw new Error(a + ' is already a property of Array.protoype');
-    }
-  });
-
   
   //--------------- auxiliary ---------------//
 
@@ -85,7 +79,7 @@
   
   //--------------- print cube or standard array ---------------//
 
-  Array.prototype.print = function(retStr) {   
+  addArrayMethod('print', function(retStr) {   
     let str;
     const dc = this._d_c_;
     //use info if empty or too many entries
@@ -149,12 +143,12 @@
       console.log(str);
       return this;
     }
-  };
+  });
   
   
   //--------------- print info on cube or standard array ---------------//
   
-  Array.prototype.info = function(retStr) {
+  addArrayMethod('info', function(retStr) {
     let str;
     const dc = this._d_c_;
     if (dc) {
@@ -181,7 +175,7 @@
       console.log(str);
       return this;
     }
-  };
+  });
   
   
   //--------------- export function to set compact ---------------//

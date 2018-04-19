@@ -18,6 +18,7 @@
   "homepage": "https://github.com/gjmcn/data-cube-print-console#readme",
   "dependencies": {
     "chalk": "^2.4.0",
-    "tty-table": "^2.6.0"
+    "tty-table": "^2.6.0",
+    "data-cube-helper": "^0.1.0"
   }
 }
