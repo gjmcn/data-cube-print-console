@@ -181,7 +181,7 @@
   //--------------- export function to set compact ---------------//
   
   module.exports = ops => {
-    if ('compact' in ops) printOps.compact = ops.compact;
+    if (ops.hasOwnProperty('compact')) printOps.compact = ops.compact;
   }
 
 }
