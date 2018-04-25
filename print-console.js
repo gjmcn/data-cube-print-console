@@ -28,13 +28,13 @@
   
   //--------------- auxiliary ---------------//
 
-  const expand = {r: 'row', c: 'column', p: 'page'};
+  const expand = new Map([ ['r','row'], ['c','colomn'], ['p','page'] ]);
   
   //truncate string if longer than max
   const truncate = (s,mx) => s.length > mx ? s.slice(0,mx) + ' ...' : s;
   
   //shape of cube as a comma-separated list
-  const shapeStr = x => ['r','c','p'].map(a => x._d_c_[a]).join(', ');
+  const shapeStr = x => ['r','c','p'].map(a => x._d_c_.get(a).join(', ');
   
   //format functions
   let fmt = {
@@ -86,24 +86,26 @@
     if (this.length > maxPrint || this.length === 0) str = this.info(true);
     //cube
     else if (dc) {
-      const nr = dc.r, nc = dc.c, np = dc.p;
-      const e = dc.e;
-      let rowKey, pageKey, pageLabel;
-      if (e) {
-        if (e.rk) rowKey = true;
-        if (e.pk) pageKey = true;
-        if (e.pl) pageLabel= true;
+      const nr = dc.get('r'), nc = dc.get('c'), np = dc('p');
+      const e = dc.get('e');
+      if (e) {  //ck, pk, pk will be
+        if (e.has('rk')) var rowKeys  = Array.from(e.get('rk').keys());
+        if (e.has('ck')) var colKeys  = Array.from(e.get('ck').keys());
+        if (e.has('pk')) var pageKeys = Array.from(e.get('pk').keys());
+        var rowLabel  = e.get('rl');        
+        var colLabel  = e.get('cl');        
+        var pageLabel = e.get('pl');        
       }
       //1st row: col and row labels in 1st entry then col indices/keys
       let colInfo = new Array(nc+1);
       if (e) {
         let topLeft = ''
-        if (e.cl) topLeft += fmt.label(e.cl + ' →');
-        if (e.rl) {
-          if (e.cl) topLeft += '\n';
-          topLeft += fmt.label(e.rl + ' ↓');
+        if (colLabel) topLeft += fmt.label(colLabel + ' →');
+        if (rowLabel) {
+          if (colLabel) topLeft += '\n';
+          topLeft += fmt.label(rowLabel + ' ↓');
         }
-        if (e.ck) colInfo = [topLeft].concat(e.ca.map(fmt.key));
+        if (colKeys) colInfo = [topLeft].concat(colKeys.map(fmt.key));
         else {
           colInfo[0] = topLeft;
           for (let c=0; c<nc; c++) colInfo[c+1] = fmt.index(c);
@@ -117,14 +119,14 @@
       //pages
       str = '';
       for (let p=0; p<np; p++) {
-        if (np > 1 || pageKey || pageLabel) {
-          str += `\n  ${(pageLabel ? fmt.label(e.pl) : fmt.faint('page')) + fmt.faint(':')} ${
-                     pageKey ? fmt.key(e.pa[p]) : fmt.index(p)}`;
+        if (np > 1 || pageKeys || pageLabel) {
+          str += `\n  ${(pageLabel ? fmt.label(pageLabel) : fmt.faint('page')) + fmt.faint(':')} ${
+                     pageKeys ? fmt.key(pageKeys[p]) : fmt.index(p)}`;
         }
         let data = new Array(nr);
         for (let r=0; r<nr; r++) {
           let thisRow = new Array(nc+1);
-          thisRow[0] = rowKey ? fmt.key(e.ra[r]) : fmt.index(r);
+          thisRow[0] = rowKeys ? fmt.key(rowKeys[r]) : fmt.index(r);
           for (let c=0; c<nc; c++) {
             thisRow[c+1] = fmtEntry(this[r + nr*c + nr*nc*p]); 
           }
@@ -156,10 +158,10 @@
       const labels = [];
       if (dc.e) {
         ['rk', 'ck' ,'pk'].map(a => {
-          if (dc.e[a]) keys.push(expand[a[0]]);
+          if (dc.e.has(a) keys.push(expand.get(a[0]));
         }); 
         ['rl', 'cl' ,'pl'].map(a => {
-          if (dc.e[a]) labels.push(expand[a[0]]);
+          if (dc.e.has(a)) labels.push(expand.get(a[0]));
         });
       }
       str =
