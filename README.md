@@ -12,9 +12,9 @@ The package adds two methods to `Array.prototype`:
 
 * `info`: print summary information about a cube (or a standard array)
 
-If called without an argument, the above methods print the relevant information to the console and return the array/cube. This makes it easy to print intermediate results, e.g. `x.sum().print().sqrt()`.
+If called with no argument (or a falsy argument), the above methods pass a formatted string representating the cube/array to `console.log` and return the cube/array.
 
-If passed a truthy argument, `print` and `info` return the string to be printed, but do not print anything.
+When passed a truthy argument, `print` and `info` return the formatted string (and do not print anything).
 
 Currently, the only formatting option is whether to draw lines between rows:
 
@@ -25,6 +25,8 @@ setOps({compact: false});   //draw lines
 
 ## Notes
 
+* `print` and `info` can be used to print intermediate results, e.g. `x.sum().print().sqrt()`.
+
 * the default formatting makes it easy to identify what things are:
 
 	* entries are colored by type
@@ -32,6 +34,7 @@ setOps({compact: false});   //draw lines
 	* labels and keys are white; indices are gray and are wrapped in parentheses
 
 * `print` and `info` do *not* convert a standard array to a cube like core DataCube methods do
+
 
 * this package cannot currently be used in the browser; use [data-cube-print-html](https://github.com/gjmcn/data-cube-print-html) to print cubes as HTML tables
 

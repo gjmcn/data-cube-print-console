@@ -1,43 +1,61 @@
-{
-  'use strict';
-    
-  require('data-cube');
-  setOps = require('data-cube-print-console');
+require('data-cube');
+setOps = require('data-cube-print-console');
 
-  //uncomment to show horizontal lines
-  //setOps({compact: false});
+//uncomment to show horizontal lines
+//setOps({compact: false});
 
-  const clog = console.log;
-  const show = x => {
-    x.print();
-    clog('-- info --');
-    x.info();
-  };
+const clog = console.log;
+const show = x => {
+  x.print();
+  clog('-- info --');
+  x.info();
+};
+
+
+x = [5,3,2].rand(100)
+.$key(['Alice','Bob','Cath','Dan','Eli'])
+.$key(1,['biology','chemistry','physics'])
+.$key(2,['Autumn','Spring'])
+.$label('Student')
+.$label(1,'Subject')
+.$label(2,'Term');
+
+clog(x)
+x.print();
+x.info();  
+
+
+
+  
+//!!!!!!!!!!! TO DO:
   
   
-  //--------------- examples ---------------//
-  clog('');
-  const v = [5.67, 'a string', true, null, undefined, new Date(),
-    ()=>5, [5,6,7],   [8,9].toCube(), {a:5}, new Set([1, 2, 3, 4, 5]), /asd/].toCube();
-  let x;
-
-  clog('----- 1-entry array -----');
-  show([5]);
+//--------------- examples ---------------//
   
-  clog('----- 1-entry cube -----');
-  show([5].toCube());
-  
-//  clog('----- array -----') -  when can copy cube to array
-  
-  clog('----- vector -----');
-  show(v);
 
-  //clog('----- dictionary -----');  - when can add keys
+//clog('');
+//  const v = [5.67, 'a string', true, null, undefined, new Date(),
+//    ()=>5, [5,6,7],   [8,9].toCube(), {a:5}, new Set([1, 2, 3, 4, 5]), /asd/].toCube();
 
-
-  //clog('----- dictionary, all keys and labels -----');  -when can add keys and labels
-
-
+//
+//clog('----- 1-entry array -----');
+//
+//
+//clog('----- 1-entry cube -----');
+//
+//
+//clog('----- array -----') -  when can copy cube to array
+//
+//
+//clog('----- vector -----');
+//
+//
+//clog('----- dictionary -----');  - when can add keys
+//
+//
+//clog('----- dictionary, all keys and labels -----');  -when can add keys and labels
+//
+//
 //  clog('----- \'row vector\' -----');  -when can reshape
 //
 //
@@ -62,10 +80,7 @@
 //  clog('----- multiple pages -----');  -when can reshape
 //
 //
-//  clog('----- multiple pages, row keys, page labels -----');  -when can reshape adn add keys and labels
+//  clog('----- multiple pages, row keys, page labels -----');  -when can reshape and add keys and labels
 //
 //
 //  clog('----- multiple pages, all keys and labels -----');  -when can reshape adn add keys and labels
-
-  
-}
