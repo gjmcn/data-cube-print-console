@@ -72,7 +72,7 @@
   //--------------- print cube or standard array ---------------//
 
   helper.addArrayMethod('print', function(retStr) {
-    helper.assert.single(retStr);
+    retStr = helper.assert.single(retStr);
     let str;
     //use info if empty or too many entries
     if (this.length > maxPrint || this.length === 0) return this.info(retStr);
@@ -134,7 +134,7 @@
   //--------------- print info on cube or standard array ---------------//
   
   helper.addArrayMethod('info', function(retStr) {
-    helper.assert.single(retStr);
+    retStr = helper.assert.single(retStr);
     let str;
     if (this._data_cube) {
       const keys = [];
