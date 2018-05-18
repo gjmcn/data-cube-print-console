@@ -1,7 +1,7 @@
 {
   "name": "data-cube-print-console",
   "version": "0.1.0",
-  "description": "",
+  "description": "Print DataCubes in the terminal.",
   "main": "print-console.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -20,5 +20,8 @@
     "chalk": "^2.4.0",
     "tty-table": "^2.6.0",
     "data-cube-helper": "^0.1.0"
+  },
+  "peerDependencies": {
+    "data-cube": "^0.1.0"
   }
 }

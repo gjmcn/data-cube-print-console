@@ -1,3 +1,4 @@
+
 require('data-cube');
 setOps = require('data-cube-print-console');
 
