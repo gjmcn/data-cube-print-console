@@ -3,7 +3,8 @@
   
   const Table = require('tty-table');
   const chalk = require('chalk');
-  const helper = require('data-cube-helper');
+  
+  const helper = Array.prototype._helper;
   
   
   //--------------- options and prep ---------------//
