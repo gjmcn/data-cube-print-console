@@ -1,4 +1,4 @@
-Print [DataCubes](https://github.com/gjmcn/data-cube) in the terminal.
+Print [Data-Cubes](https://github.com/gjmcn/data-cube) in the terminal.
 
 ## Usage
 
@@ -33,7 +33,7 @@ setOps({compact: false});   //draw lines
 	* strings are quoted
 	* labels and keys are white; indices are gray and are wrapped in parentheses
 
-* `print` and `info` do *not* convert a standard array to a cube like core DataCube methods do
+* `print` and `info` do *not* convert a standard array to a cube like core Data-Cube methods do
 
 
 * this package cannot currently be used in the browser; use [data-cube-print-html](https://github.com/gjmcn/data-cube-print-html) to print cubes as HTML tables
