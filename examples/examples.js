@@ -14,10 +14,10 @@ const show = x => {
 
 
 x = [5,3,2].rand(100)
-.$key(['Alice','Bob','Cath','Dan','Eli'])
+.$key(0,['Alice','Bob','Cath','Dan','Eli'])
 .$key(1,['biology','chemistry','physics'])
 .$key(2,['Autumn','Spring'])
-.$label('Student')
+.$label(0,'Student')
 .$label(1,'Subject')
 .$label(2,'Term');
 
