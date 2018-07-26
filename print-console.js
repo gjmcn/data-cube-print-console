@@ -50,7 +50,7 @@
     function: x => chalk.cyan('function'),    
     date: x => chalk.cyan(('' + x).replace(/\s*\([^\)]*\)/, '')),
     cube: x => chalk.cyan('cube (entries: ' + x.length + ', shape: ' + x._s + ')'),
-    array: x => chalk.cyan('array (entries: ' + x.length +')'),
+    array: x => chalk.cyan('standard array (entries: ' + x.length +')'),
     other: x => chalk.cyan(truncate('' + x, maxStr)),
     index: x => chalk.gray('(' + x + ')'),
     key: x => chalk.white(truncate('' + x, maxStr)),
