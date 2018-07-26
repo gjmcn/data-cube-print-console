@@ -71,12 +71,11 @@
 
   
   //--------------- print cube or standard array ---------------//
-
-  helper.addArrayMethod('print', function(retStr) {
-    retStr = helper.assert.single(retStr);
+  
+  helper.addArrayMethod('print', function() {
     let str;
     //use info if empty or too many entries
-    if (this.length > maxPrint || this.length === 0) return this.info(retStr);
+    if (this.length > maxPrint || this.length === 0) return this.info();
     //cube
     else if (this._data_cube) {
       const [nr, nc, np] = this._s;
@@ -129,8 +128,6 @@
       str = fmt.faint('\n  (standard array)') + 
             Table([], data, printOps).render() + '\n'; 
     }
-    //print and return
-    if (retStr) return str;
     console.log(str);
     return this;
   });
@@ -138,8 +135,7 @@
   
   //--------------- print info on cube or standard array ---------------//
   
-  helper.addArrayMethod('info', function(retStr) {
-    retStr = helper.assert.single(retStr);
+  helper.addArrayMethod('info', function() {
     let str;
     if (this._data_cube) {
       const keys = [];
@@ -154,7 +150,6 @@
         '\n';
     }
     else str = '\n  (standard array)\n  entries: ' + this.length + '\n';
-    if (retStr) return str;
     console.log(str);
     return this;
   });
