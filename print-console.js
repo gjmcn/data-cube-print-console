@@ -122,9 +122,13 @@
         str += Table(colInfo, data, printOps).render() + '\n';
       }
     }
-    //standard array
-    else str = fmt.faint('\n  (standard array)') + 
-      Table([], this.map( (a,i) => [fmt.index(i), fmtEntry(a)]), printOps).render() + '\n';
+    else {  //standard array
+      const nr = this.length,
+            data = new Array(nr);
+      for (let r=0; r<nr; r++) data[r] = [fmt.index(r), fmtEntry(this[r])];
+      str = fmt.faint('\n  (standard array)') + 
+            Table([], data, printOps).render() + '\n'; 
+    }
     //print and return
     if (retStr) return str;
     console.log(str);

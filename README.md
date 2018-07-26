@@ -2,9 +2,9 @@ Print [Data-Cubes](https://github.com/gjmcn/data-cube) in the terminal.
 
 ## Usage
 
-Install: `npm install --save data-cube-print-console`
+Install: `npm install --save @gjmcn/data-cube-print-console`
 
-Load: `require('data-cube-print-console');`
+Load: `require('@gjmcn/data-cube-print-console');`
 
 The package adds two methods to `Array.prototype`:
 

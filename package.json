@@ -1,5 +1,5 @@
 {
-  "name": "data-cube-print-console",
+  "name": "@gjmcn/data-cube-print-console",
   "version": "0.1.0",
   "description": "Print Data-Cubes in the terminal.",
   "main": "print-console.js",
@@ -21,6 +21,6 @@
     "tty-table": "^2.6.0"
   },
   "peerDependencies": {
-    "data-cube": "^0.1.0"
+    "@gjmcn/data-cube": "^0.1.0"
   }
 }
