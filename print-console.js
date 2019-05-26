@@ -1,4 +1,5 @@
-{
+(() => {
+
   'use strict';
   
   const Table = require('tty-table');
@@ -140,13 +141,21 @@
     if (this._data_cube) {
       const keys = [];
       const labels = [];
-      if (this._k) this._k.forEach((a,i) => a ? keys.push(helper.dimName[i]) : 0);
-      if (this._l) this._l.forEach((a,i) => a ? labels.push(helper.dimName[i]): 0);
+      if (this._k) this._k.forEach((a,i) => a ? keys.push(helper.dimName[i])   : 0);
+      if (this._l) this._l.forEach((a,i) => a ? labels.push(helper.dimName[i]) : 0);
+      const before = this._b
+        ? (this._b.length === 1 ? '1 function' : this._b.length + ' functions')
+        : '(none)';
+      const after = this._a
+        ? (this._a.length === 1 ? '1 function' : this._a.length + ' functions')
+        : '(none)';
       str =
         '\n  entries:  ' + this.length + 
         '\n  shape:    ' + this._s +
         '\n  keys:     ' + (keys.length   ? keys   : '(none)') + 
         '\n  labels:   ' + (labels.length ? labels : '(none)') +
+        '\n  before:   ' + before +
+        '\n  after:    ' + after  +
         '\n';
     }
     else str = '\n  (standard array)\n  entries: ' + this.length + '\n';
@@ -161,4 +170,4 @@
     if (ops.hasOwnProperty('compact')) printOps.compact = ops.compact;
   }
 
-}
+})();
